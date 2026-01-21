@@ -1,7 +1,10 @@
 {
-  "name": "backend",
+  "name": "@dhinesh_kumar/create-dhidroid-nodeapp",
   "version": "1.0.0",
   "description": "CLI to generate enterprise Node.js applications",
+  "publishConfig": {
+    "access": "public"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/dhidroid/Dhidroid-nodejs-template.git"
@@ -403,7 +406,12 @@
     "typescript": "^5.9.3"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "dev": "ts-node src/index.ts",
+    "lint": "eslint src/**",
+    "test": "echo \"CLI Tests not implemented\" && exit 0",
+    "prepublishOnly": "npm run build"
   },
   "keywords": [],
   "author": "",

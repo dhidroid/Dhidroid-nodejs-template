@@ -1,8 +1,8 @@
-# @dhidroid/create-dhidroid-nodeapp
+# @dhinesh_kumar/create-dhidroid-nodeapp
 
 ![CI](https://github.com/dhidroid/Dhidroid-nodejs-template/actions/workflows/ci.yml/badge.svg)
-![NPM Version](https://img.shields.io/npm/v/@dhidroid/create-dhidroid-nodeapp)
-![License](https://img.shields.io/npm/l/@dhidroid/create-dhidroid-nodeapp)
+![NPM Version](https://img.shields.io/npm/v/@dhinesh_kumar/create-dhidroid-nodeapp)
+![License](https://img.shields.io/npm/l/@dhinesh_kumar/create-dhidroid-nodeapp)
 
 A robust, scalable, and production-ready Node.js backend generator. Scaffolds enterprise-level projects with TypeScript, Express, and MongoDB/SQL.
 
@@ -11,7 +11,7 @@ A robust, scalable, and production-ready Node.js backend generator. Scaffolds en
 Run the generator directly with npx:
 
 ```bash
-npx @dhidroid/create-dhidroid-nodeapp@latest
+npx @dhinesh_kumar/create-dhidroid-nodeapp@latest
 ```
 
 Follow the interactive prompts to configure your project (Database, Docker, git hooks, etc).

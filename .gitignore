@@ -114,3 +114,5 @@ playwright-report
 test-results
 
 # Artifacts & Templates (keep templates, ignore dist unless it's the build output we want to ignore in source control but usually we ignore dist)
+.npmrc
+.npmrc
