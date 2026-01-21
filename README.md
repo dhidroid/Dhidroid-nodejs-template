@@ -8,17 +8,20 @@ A robust, scalable, and production-ready Node.js backend generator. Scaffolds en
 
 ## Usage
 
-Run the generator directly with npx:
+Run the generator:
 
 ```bash
 npx @dhinesh_kumar/create-dhidroid-nodeapp@latest
 ```
 
-Follow the interactive prompts to configure your project (Database, Docker, git hooks, etc).
+You will be prompted to select a **Variant**:
+- TypeScript + MongoDB
+- TypeScript + PostgreSQL
+- TypeScript + MSSQL
 
 ## Features
-- **Prompt-Based**: Asks for Project Name, Database (Mongo/PG/MSSQL), Docker, Git.
-- **Templates**: Uses a base template (formerly the single-instance app) and modifies it on the fly.
+- **Vite-like Prompts**: Simple, valid setup selection.
+- **Enterprise Ready**: Includes optional Docker and Git hooks.
 - **Database Support**: Automatically switches database drivers and connection logic based on selection.
 - **DevOps**: Conditionally includes Docker files and Husky git hooks.
 

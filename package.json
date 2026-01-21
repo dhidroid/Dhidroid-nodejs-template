@@ -1,6 +1,6 @@
 {
   "name": "@dhinesh_kumar/create-dhidroid-nodeapp",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "CLI to generate enterprise Node.js applications",
   "publishConfig": {
     "access": "public"

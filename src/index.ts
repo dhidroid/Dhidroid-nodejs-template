@@ -11,7 +11,7 @@ const program = new Command();
 program
     .name('create-dhidroid-nodeapp')
     .description('CLI to generate enterprise Node.js applications')
-    .version('1.0.0')
+    .version('1.1.0')
     .action(init);
 
 program.parse(process.argv);
@@ -23,51 +23,62 @@ async function init() {
         {
             type: 'input',
             name: 'projectName',
-            message: 'What is your project name?',
-            default: 'my-app',
+            message: 'Project name:',
+            default: 'dhidroid-project',
             validate: (input) => /^[a-z0-9-_]+$/.test(input) || 'Project name should be lowercase and valid folder name',
         },
         {
             type: 'list',
-            name: 'database',
-            message: 'Which database would you like to use?',
-            choices: ['MongoDB', 'PostgreSQL', 'MSSQL'],
+            name: 'framework',
+            message: 'Select framework:',
+            choices: ['Enterprise Node.js'],
+        },
+        {
+            type: 'list',
+            name: 'variant',
+            message: 'Select variant:',
+            choices: [
+                { name: 'TypeScript + MongoDB', value: 'MongoDB' },
+                { name: 'TypeScript + PostgreSQL', value: 'PostgreSQL' },
+                { name: 'TypeScript + MSSQL', value: 'MSSQL' },
+            ],
         },
         {
             type: 'confirm',
             name: 'docker',
-            message: 'Would you like to include Docker configuration?',
+            message: 'Add Docker Configuration?',
             default: true,
         },
         {
             type: 'confirm',
             name: 'gitHooks',
-            message: 'Would you like to configure Git hooks (Husky, lint-staged)?',
+            message: 'Add Git Hooks (Husky)?',
             default: true,
         },
         {
             type: 'confirm',
             name: 'gitInit',
-            message: 'Would you like to initialize a git repository?',
+            message: 'Initialize Git repository?',
             default: true,
         },
     ]);
 
     const targetDir = path.join(process.cwd(), answers.projectName);
+    const dbChoice = answers.variant; // Map variant back to DB choice logic
 
     if (fs.existsSync(targetDir)) {
         console.error(chalk.red(`Error: Directory ${answers.projectName} already exists.`));
         process.exit(1);
     }
 
-    console.log(chalk.blue(`\n📂 Creating project in ${targetDir}...`));
+    console.log(chalk.blue(`\n📂 Scaffolding project in ${targetDir}...`));
 
     // Copy Template
     const templateDir = path.join(__dirname, '../templates/base');
     await fs.copy(templateDir, targetDir);
 
     // Customize Database
-    await customizeDatabase(targetDir, answers.database);
+    await customizeDatabase(targetDir, dbChoice);
 
     // Customize Docker
     if (!answers.docker) {
@@ -88,29 +99,25 @@ async function init() {
         await fs.writeJson(pkgPath, pkg, { spaces: 2 });
     }
 
-    // Final touches: Update package.json name
+    // Final touches
     const pkgPath = path.join(targetDir, 'package.json');
     const pkg = await fs.readJson(pkgPath);
     pkg.name = answers.projectName;
 
     // Database dependencies update
-    if (answers.database === 'MongoDB') {
+    if (dbChoice === 'MongoDB') {
         // Already set up
-    } else if (answers.database === 'PostgreSQL') {
+    } else if (dbChoice === 'PostgreSQL') {
         delete pkg.dependencies.mongoose;
         pkg.dependencies.pg = '^8.11.3';
-        pkg.dependencies.typeorm = '^0.3.17'; // Example
+        pkg.dependencies.typeorm = '^0.3.17';
         pkg.devDependencies['@types/pg'] = '^8.10.9';
-    } else if (answers.database === 'MSSQL') {
+    } else if (dbChoice === 'MSSQL') {
         delete pkg.dependencies.mongoose;
         pkg.dependencies.mssql = '^10.0.1';
     }
 
     await fs.writeJson(pkgPath, pkg, { spaces: 2 });
-
-    // Update config/database.ts content based on DB choice is complex via basic copy-paste.
-    // Ideally we would have 'templates/db/postgres/database.ts' etc.
-    // For now, we will assume stub implementation or placeholders if selected different DB.
 
     // Git Init
     if (answers.gitInit) {
@@ -123,13 +130,10 @@ async function init() {
         }
     }
 
-    console.log(chalk.bold.green('\n✅ Project created successfully!'));
-    console.log(`
-To get started:
-  ${chalk.cyan(`cd ${answers.projectName}`)}
-  ${chalk.cyan('npm install')}
-  ${chalk.cyan('npm run dev')}
-`);
+    console.log(chalk.bold.green('\n✅ Done. Now run:\n'));
+    console.log(`  cd ${answers.projectName}`);
+    console.log(`  npm install`);
+    console.log(`  npm run dev\n`);
 }
 
 async function customizeDatabase(targetDir: string, dbType: string) {
