@@ -1,0 +1,10 @@
+# Ignore everything
+*
+
+# Re-include things we want to publish
+!package.json
+!README.md
+!LICENSE
+!dist/**
+!templates/**
+!bin/**
