@@ -1,6 +1,6 @@
 {
   "name": "@dhinesh_kumar/create-dhidroid-nodeapp",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "CLI to generate enterprise Node.js applications",
   "publishConfig": {
     "access": "public"
@@ -406,7 +406,7 @@
     "typescript": "^5.9.3"
   },
   "scripts": {
-    "build": "tsc",
+    "build": "tsc && chmod +x dist/index.js",
     "start": "node dist/index.js",
     "dev": "ts-node src/index.ts",
     "lint": "eslint src/**",
