@@ -2,46 +2,160 @@
 sidebar_position: 1
 ---
 
-# Tutorial Intro
+# Introduction
 
-Let's discover **Docusaurus in less than 5 minutes**.
+Welcome to the **Dhidroid Node.js Template** 🚀
+
+This repository provides a **production-ready Node.js REST API starter template** that helps you kick-start backend development without wasting time on repetitive setup. It is designed with **scalability, maintainability, and real-world usage** in mind.
+
+Whether you are building a **prototype, MVP, or a full-scale backend service**, this template enables you to focus on **business logic instead of boilerplate code**.
+
+---
+
+## Why this template?
+
+Modern backend projects often fail due to poor structure and rushed setup. This template solves that problem by offering:
+
+- ⚙️ A clean and scalable Node.js project structure  
+- 🔌 REST API–ready architecture  
+- 🧩 Modular design for easy feature expansion  
+- 🛡️ Environment-based configuration support  
+- 🧪 Developer-friendly local development setup  
+- 📦 Optimized for long-term maintenance and growth  
+
+---
+
+## Prerequisites
+
+Before getting started, ensure you have the following installed:
+
+- **Node.js** version **20.0 or above**
+- **npm** (bundled with Node.js)
+- Basic understanding of **JavaScript** and **REST APIs**
+
+> 💡 Recommendation: When installing Node.js, enable all dependency-related options.
+
+---
 
 ## Getting Started
 
-Get started by **creating a new site**.
+Follow the steps below to run the project locally.
 
-Or **try Docusaurus immediately** with **[docusaurus.new](https://docusaurus.new)**.
+---
 
-### What you'll need
+## Clone the Repository
 
-- [Node.js](https://nodejs.org/en/download/) version 20.0 or above:
-  - When installing Node.js, you are recommended to check all checkboxes related to dependencies.
-
-## Generate a new site
-
-Generate a new Docusaurus site using the **classic template**.
-
-The classic template will automatically be added to your project after you run the command:
+Clone the template from GitHub:
 
 ```bash
-npm init docusaurus@latest my-website classic
-```
+git clone https://github.com/dhidroid/Dhidroid-nodejs-template.git
+````
 
-You can type this command into Command Prompt, Powershell, Terminal, or any other integrated terminal of your code editor.
-
-The command also installs all necessary dependencies you need to run Docusaurus.
-
-## Start your site
-
-Run the development server:
+Navigate into the project directory:
 
 ```bash
-cd my-website
-npm run start
+cd Dhidroid-nodejs-template
 ```
 
-The `cd` command changes the directory you're working with. In order to work with your newly created Docusaurus site, you'll need to navigate the terminal there.
+Switch to the active development branch:
 
-The `npm run start` command builds your website locally and serves it through a development server, ready for you to view at http://localhost:3000/.
+```bash
+git checkout dev
+```
 
-Open `docs/intro.md` (this page) and edit some lines: the site **reloads automatically** and displays your changes.
+---
+
+## Install Dependencies
+
+Install all required project dependencies:
+
+```bash
+npm install
+```
+
+This command installs everything needed to run and develop the application.
+
+---
+
+## Environment Configuration
+
+Create a `.env` file in the root directory and configure the required environment variables:
+
+```env
+PORT=3000
+NODE_ENV=development
+```
+
+> Additional environment variables can be added as the project grows.
+
+---
+
+## Run the Development Server
+
+Start the application in development mode:
+
+```bash
+npm run dev
+```
+
+Once running, the API will be available at:
+
+```
+http://localhost:3000
+```
+
+The server supports hot-reloading for faster development.
+
+---
+
+## Project Structure Overview
+
+The project follows a **modular and scalable architecture**, making it easy to manage and extend.
+
+Key benefits of the structure:
+
+* Clear separation of concerns
+* Easy onboarding for new developers
+* Simplified debugging and testing
+* Scalable foundation for production use
+
+Detailed explanations of folders and conventions are covered in upcoming documentation sections.
+
+---
+
+## Best Use Cases
+
+This template is ideal for:
+
+* REST API backends
+* Startup MVPs
+* SaaS platforms
+* Internal tools and services
+* Open-source backend projects
+
+---
+
+## Next Steps
+
+After setting up the project, you can:
+
+* Add new **API modules and routes**
+* Integrate a **database**
+* Implement **authentication & authorization**
+* Add **logging, validation, and error handling**
+* Prepare the application for **production deployment**
+
+---
+
+## Contributing
+
+Contributions are welcome!
+If you have improvements or fixes, feel free to open an issue or submit a pull request.
+
+---
+
+## License
+
+This project is open-source and available under the **MIT License**.
+
+Happy building with **Dhidroid Node.js Template** 🚀
